@@ -1,5 +1,5 @@
 # Machine Learning 시작!!!
-## 1주차 Machine Learning 이란!!
+## 1일차 Machine Learning 이란!!
 * 하나의 소프트웨어 이다!! 하나의 문제에 여러 문제,룰들이 존재하여 프로그래밍하는데 많은 시간이 걸려 이런 부분을 단축하기 학습을 통해 판단하도록 프로그래밍을 하게끔하는것이다!!   
     * Supervised Learning >> label을 통해 주기적으로 교육시킴(Training data set) ex) 고양이 사진에 고양이 label을 통해 구별한다   
         *  ex) 공부 시간 투자로 시험 성적 예상 프르그램,-휴대폰 성능에 따른 배터리 시간 측정 - regression(회귀 분석) 
@@ -18,10 +18,32 @@
     * Variable : 우리가 일반적은로 사용하는 변수가 아닌 tensorflow가 사용하는 변수이며 trianable 한 Variable (훈련 할 수 있는 변수??)>>이와 같이 사용"tf.Variable(<initial-value>, name=<optional-name>)"
     * 구현 순서 : 일차함수 와 cost 최소화 함수 구현 >> placeholder를 사용했을때 sess.run(일차 함수 , feed_dict={})활용하여 구현!!
 * Cost Minimize 
+    * cost function은 실제 값에서 그래프의 값까지 차이가 가장 자긍 값을 구하고자 하는것이다
     * Gradient descent algorithm   
-    Minimize cost Function    
-    
+    주 Minimize cost Function 이용  어떤 지점에서 시작할 수 있다    
+    대부분 어느 지점 에서 시작 해도 경사가 없는 지점에 도달하며 미분을 주로 이용한다  
+    cost function 설계 시 convex function(구현시 삼차원으로 구현시 빕 그릇을 엎어둔 모양처럼 보이며 어떤 지점에서 시작해도 똑같은 W ,b값을 구할 수 있다 )으로 구현 하지 않을 경우 각기 다른지점을 선택하여 진행했을때 다른 결과를 받을 수 있기 때문에 주의 해야한다
+    * matplotlib.pyplot 구현 하는중 데이터 시각화 할때 자주 사용 되는 파이썬 라이브러리 이다
+    * 일차 함수가 복잡할수록 미분의 알고리즘을 더욱 복잡해지면서 구현이 힘들다 이 문제를 해결 하기 위해서는 optimizer를 사용함으로써 수월하게 구할수 있다
     ```
     간단한 파이썬 문법
+    range(시작점 , 종료 숫자 , step) 시작 숫자나 step은 생략 가능하다
+    for i in range(5):
+    print(i)   
+    result   
+    0
+    1
+    2
+    3
+    4
+    리스트 관련 메소드 
+    리스트에 요소 추가(append)
+    a = [1,2,3]
+    a.append(4)
+    a
+    result
+    [1,2,3,4]
+    요소 제거(remove)
+
 
     ```
