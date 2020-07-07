@@ -17,7 +17,11 @@
     * Cost : 실제 데이터와 그래프 간의 거리
     * Variable : 우리가 일반적은로 사용하는 변수가 아닌 tensorflow가 사용하는 변수이며 trianable 한 Variable (훈련 할 수 있는 변수??)>>이와 같이 사용"tf.Variable(<initial-value>, name=<optional-name>)"
     * 구현 순서 : 일차함수 와 cost 최소화 함수 구현 >> placeholder를 사용했을때 sess.run(일차 함수 , feed_dict={})활용하여 구현!!
+* Cost Minimize 
+    * Gradient descent algorithm   
+    Minimize cost Function    
+    
     ```
     간단한 파이썬 문법
-    
+
     ```
