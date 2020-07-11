@@ -93,7 +93,11 @@
                 ```    
 * Machine Learning 동작 여부 확인
     * training set(기존의 학습시킬 데이터)에서 30~40%정도만 학습시키고 남은 data는 test set을 활용한다!!
-     
+
+## 4일차
+* Deap Learning
+* Tensor 이해
+    * 
 ### 간단한 개념 정리
 * 인공지능 용어
     * AI >> Machine Learning >> Deap Learnning
