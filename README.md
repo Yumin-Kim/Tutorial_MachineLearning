@@ -95,9 +95,31 @@
     * training set(기존의 학습시킬 데이터)에서 30~40%정도만 학습시키고 남은 data는 test set을 활용한다!!
 
 ## 4일차
-* Deap Learning
+* Deep Learning
 * Tensor 이해
-    * 
+    * Shape      
+    배열안 요소의 갯수(행,열에 관련된 정보를 준다)
+    * ranks   
+    몇차원 배열
+    * Axis      
+    axis는 0부터 시작해서 안으로 들어갈때마다 하나씩 증가한다 (axis[-1]은 마지막 axis를 의미)
+    * Broadcasting    
+    행렬이 달라고 계산할수있게 도와준다!!
+    * reduce_mean(평균값) , reduce_sum , Argmax(배열의 index값)
+* Neural Network 
+    * XOR using NN    
+    XOR로 인해 Linear 그래프를 찾지 못하는 현상이 벌어지고잇음   
+    Multinomial classification을 사용하여 구현한다!!
+    ```
+    구현 코드
+    K = tf.sigmoid(tf.matmul(X,W1)+b1)
+    hypothesis = tf.sigmoid(tf.matmul(K,W2)+b2)
+    ```
+* Back propagation(다시 한번 찾아보기!!)
+    * Tensorflow에서 내부적으로 구현되어있다!!
+* Tensor board   
+Neural Net시 출력하는결과를 가독성있게 보기 위해서 사용한다    
+
 ### 간단한 개념 정리
 * 인공지능 용어
     * AI >> Machine Learning >> Deap Learnning
