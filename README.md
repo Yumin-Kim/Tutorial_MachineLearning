@@ -120,6 +120,41 @@
 * Tensor board   
 Neural Net시 출력하는결과를 가독성있게 보기 위해서 사용한다    
 
+## 5일차
+* DeeoLearning 책으로 배웠던 부분 다시 복습!!
+* 이론 부분
+    * tensorflow는 Tensor를 흘려 보내면서 데이터를 처리하는 라이브러리!!
+        * Tensor는 다차원배열을 의미한다!! 
+        * Rank , shape 이해!!
+        * 계산 그래프 구조을 통해 노드에서 노드로 이동 합니다!!     
+        텐서들을 흘려보내는 그래프 구조를 정의 하고, 정의한 그래프에 텐서들을 흘려 보내주도록 디자인 되었다   
+        1. 그래프 생성
+        2. 그래프 실행
+        * 이와 같이 생성과 실행을 분리하는 이유는 많은 그래프를 생성했더라도 전체 그래프중에서 일부만 사용할 수 있게 하기위해서!!     
+        전체 그래프 대신 일부 필요한 그래프만 실행할 수 있게끔 최대한의 효율로 연산이 수행된다!!     
+        이 기법을 lazy Evalution 이라고 한다!!
+        * Session    
+        웹에서 사용하는 Session과 같은 의미로 사용되면 session을 열어 정보를 주고 받고 저장한후 세션을 종료하면 저장하고 있는것들을 비운다!!
+        * TensorBoard는 시각화하는 툴로 그래프구조를 쉽게 볼 수 있다
+        
+
+* 구현 부분
+    * random_normal() 정규분포에서 임의의 값을 추출함      
+    random_normal() 균등 분포에서 임의의 값을 추출함
+    * cost function(loss function)     
+    적절한 파라미터 값을 알아내기 위해서 우리가 풀고자하는 목적에 적합한값인지 측정하는 역할!! >>손실함수 정의 다른 말로는 cost function     
+    그중 많이 사용하는 함수로 평균 제곱 오차 우리의 예측값이 실제로 가까울수록 작은값을 가짐!!
+    * tensorboard 
+        * 현재 작업 하는 디렉토리 까지 cmd로 찾아 들어가서 tensorboard --logdir=./저장 파일명
+        * 간단한 사용방법
+            1. cost function 정의
+            2. tensorboard를 위한 요약 정보 정의
+                * tf.summary.scalar('y축명',costfunction명)
+                * 요약한 정보를 직렬화(Serialize)해서 파일 형태로 저장하기위해서 tf.summary.FileWriter
+            3. 요약한 정보들을 하나로 합친다!! merged = tf.summary.merge_all                  
+            4. tensorboard_Writer = tf.summary.FileWriter("파일명",sess.graph)
+            5. 반복문을 통해 결과값 파일에 추가!!
+
 ### 간단한 개념 정리
 * 인공지능 용어
     * AI >> Machine Learning >> Deap Learnning
