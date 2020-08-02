@@ -193,9 +193,18 @@ Neural Net시 출력하는결과를 가독성있게 보기 위해서 사용한�
         기존에는 다른 목적의 문제를 해결하려고 할때마다 매번 새로운 트레이닝을 진행했지만 전이 학습을 통해 새로운 문제를 해결할때 다은 목적을 해결하고자 학습 파라미터를 지식으로 간주하여 해결하는 방식이다     
     * 과정 정리 데이터 재구축(데이터 분류에 대한 목적은 고려하지 않고 오직 Mnist 데이터 재구축하는데 최적화!!) >> 재구축한 데이터를 활용한 파인튜닝을 통해 Mnist 숫자 분류 최적화!!         
 ## 8일차
+* overfitting 생기는 이유    
+    Train시에는 오류없이 100%성공 하지만 Testdata를 사용하게 되면 우리가 생각했던되로 동작 하지 않는다!!   
+    이유는 Train Data에 정획히 맞아 들어가서 그런 현상이 일어난다        
+    해소 방법 많은 데이터 사용 , feature를 줄이고 Regularization을 사용해야 한다.   
+    weight값을 줄인다 ( 12reg = 0.001(Learning_rate) * tf.reduce_sum(tf.square(W)) )
+    * Dropout : 잘구성되어 있는 Neural Networks의 관계을 줄이는방법이다!!(몇개의 노드를 사용하지 않는것이다!!)
 * CNN(Convolution Neural Networks)컴볼루션 신경망     
-이미지 분야를 다루기에 최적화된 인공 신경망 구조이다 크게 Convolution Layer, Pooling Layer(Subsampling)으로 구성되었다   
-    
+    이미지 분야를 다루기에 최적화된 인공 신경망 구조이다 크게 Convolution Layer, Pooling Layer(Subsampling)으로 구성되었다   
+    conevolution을 구성 하기 위해서 RELU를 활용하여 그다음 W값을 구성 하게 되는데 중간 중간 Pooling Layer이 있는것을 확인 할 수 있다    이미지를 Filtering을 통해 convolution Layer를 구성하게(Layer의 두께는 filter의 갯수에 따라 달라 진다) 되는데 layer에서 하나의 레이어를 가지고 와서 resize(sampling 이미지 사이즈를 줄임)을 하게되는데 이 행위를 Pooling이라고 하며 이 행위를 반복하여 Pooling Layer을 구성하게 된다  
+    Pooling의 EX)4X4 layer를 max pool 2X2 filter를 사용하면 2X2가 구성된 Layer가 생기게되는데 값을 max pool이라는것은 2x2 filter를 할때 현재 filter안에서 가장 큰 값을 가지고 오는것을 말한다!!     
+    Pooling과 RELU의 순서는 상관없이 개발자의 선택 사항이다!!   
+    이 모든 과정은 이미지의 특징을 뽑아 낸다고 생각하면 될듯!! 
 ### 간단한 개념 정리
 * 인공지능 용어
     * AI >> Machine Learning >> Deap Learnning
@@ -270,5 +279,14 @@ ex) Optimizer할때
     튜플 선언 초기화 시 tup = () 불러 오기 tup[0]
     딕셔너리 선언 초기화 시 dic = {"js":1 , "java" : 2} 불러오기 dic["js"]
 
-
+    plt.imshow(image.reshape(3,3),cmap='Greys')
+    인자의 값을 넣을때 앞에 키워드 = "값" 함수를 호출하는 경우가 많다
+    이런 경우 python 문법에 키워드 매개변수라는것이 있는데 위치 매개변수 전달 방식이라고 한다
+    순서대로 인자르 입력받아 실행한다
+    이와 번대로 직접 매개변수명을 지정하여 매개변수를 전달하는 방법 또 있다!!
+    def value_times(*values,times = 2):
+        for value in values:
+            print(times * value)
+    value_times(1,2,3,4,times=5)         
+    이런식으로 사용되며 함수 정의 할때 매개변수로 times로 키워드로 지정하여서 함수 호출시 다른 인자 값을 넣어주게되면 error가 발생 하게 된다.
     ```
