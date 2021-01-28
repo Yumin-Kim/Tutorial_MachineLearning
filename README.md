@@ -245,7 +245,7 @@ ex) Optimizer할때
 * Optimizer
     * cost function Minimize algorithm을 구현 하는데 사용
     * 여러 방법 중에 Gradient Descent를 사용하며 미분 공식을 따르고 있다
-    * Gradient Descent를 사용 하기 위해 cost function을 (측정값 - 예측값 )의 평균이 아닌 ((측정값 - 예측값 ) ^ 2) / n을 해줘야 한다      
+    * Gradient Descent를 사용 하기 위해 cost function을 (측정값 - 예측값 )의 평균이 아닌 ((측정값 - 예측값 ) ^ 2) / n을 해줘야 한다      ### 0128 Restart
     
 #### 머신러닝하면서 파이썬 문법 정리!!
     ```
