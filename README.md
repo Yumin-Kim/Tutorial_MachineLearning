@@ -297,4 +297,8 @@ ex) Optimizer할때
             print(times * value)
     value_times(1,2,3,4,times=5)         
     이런식으로 사용되며 함수 정의 할때 매개변수로 times로 키워드로 지정하여서 함수 호출시 다른 인자 값을 넣어주게되면 error가 발생 하게 된다.
+    
+    
+    
+    
     ```
