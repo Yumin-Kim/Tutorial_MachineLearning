@@ -27,5 +27,5 @@
             * batch-size
                 * 한번의 batch마다 주는 데이터 샘플의 size,여기서 batch는 나눠진 데이터 셋을 뜻하며 iteration은 epoch를 나누어서 실행하는 횟수
                 * 메모리의 한계와 속도 저하떄문에 대부분의 경우에는 한번의 epoch에서 모든 데이터를 한꺼번에 집어넣을수는 없어 이와같이 데이터를 나누어서 주게 되는데 이때 몇번 나누어서 주는가를 iteraition 각 iteration마다 주는 데이터 사이즈를 batch-size하고 한다.
-            [https://mblogthumb-phinf.pstatic.net/MjAxOTAxMjNfMjU4/MDAxNTQ4MjM1Nzg3NTA2.UtvnGsckZhLHOPPOBWH841IWsZFzNcgwZvYKi2nxImEg.CdtqIxOjWeBo4eNBD2pXu5uwYGa3ZVUr8WZvtldArtYg.PNG.qbxlvnf11/20190123_182720.png?type=w800](예시)  
+            [예시 출처 : https://www.slideshare.net/w0ong/ss-82372826](https://mblogthumb-phinf.pstatic.net/MjAxOTAxMjNfMjU4/MDAxNTQ4MjM1Nzg3NTA2.UtvnGsckZhLHOPPOBWH841IWsZFzNcgwZvYKi2nxImEg.CdtqIxOjWeBo4eNBD2pXu5uwYGa3ZVUr8WZvtldArtYg.PNG.qbxlvnf11/20190123_182720.png?type=w800)  
             
