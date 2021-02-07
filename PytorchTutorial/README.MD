@@ -28,4 +28,7 @@
                 * 한번의 batch마다 주는 데이터 샘플의 size,여기서 batch는 나눠진 데이터 셋을 뜻하며 iteration은 epoch를 나누어서 실행하는 횟수
                 * 메모리의 한계와 속도 저하떄문에 대부분의 경우에는 한번의 epoch에서 모든 데이터를 한꺼번에 집어넣을수는 없어 이와같이 데이터를 나누어서 주게 되는데 이때 몇번 나누어서 주는가를 iteraition 각 iteration마다 주는 데이터 사이즈를 batch-size하고 한다.
             ![예시 출처 : https://www.slideshare.net/w0ong/ss-82372826](https://mblogthumb-phinf.pstatic.net/MjAxOTAxMjNfMjU4/MDAxNTQ4MjM1Nzg3NTA2.UtvnGsckZhLHOPPOBWH841IWsZFzNcgwZvYKi2nxImEg.CdtqIxOjWeBo4eNBD2pXu5uwYGa3ZVUr8WZvtldArtYg.PNG.qbxlvnf11/20190123_182720.png?type=w800)  
-            
+            * 예시
+                * 전체 2000개의 데이터가 있고 epochs = 20 , batch-size=500 가정
+                * 그렇다면 1epoch는 각 데이터의 size가 500인 batch가 들어간 네번의 iteration으로 나누어진다.
+                * 그리고 전체 데이터셋에 대해서 20번 학습이 이루어졌으며 iteration 기준으로 보면 총 80번의 학습이 이루어진다.
