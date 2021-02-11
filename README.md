@@ -7,7 +7,7 @@
     * Classification problem : 목적값이 연속성이 없이 몇가지 값으로 끊어지는 경우
 * **Linear Regression (선형 회귀)**
     * 선형 회귀 문제 : 데이터의 분포를 분석 하였을때 방정식으로과 같은 선형 그래프 형태로 정의될 수 있는 문제를 말한다.    
-    !(https://t1.daumcdn.net/cfile/tistory/261BBC3E544FA08635)[예제>>출처https://bcho.tistory.com/967?category=555440]
+    ![예제>>출처https://bcho.tistory.com/967?category=555440](https://t1.daumcdn.net/cfile/tistory/261BBC3E544FA08635)
 
 * 딥러닝에서 사용되느 여러 유형의 Convolution 소개
     * Convolutions
