@@ -1,0 +1,17 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "images-scraper": "^6.0.0",
+    "nodemon": "^2.0.7",
+    "puppeteer": "^7.0.4",
+    "request": "^2.88.2"
+  }
+}
