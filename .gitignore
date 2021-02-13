@@ -2,3 +2,5 @@
 */data/
 */*.png
 */node_modules
+/PytorchTutorial/pytorch_style_gan_test_discriminator.ipynb
+*/images
