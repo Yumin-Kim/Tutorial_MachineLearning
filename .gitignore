@@ -4,3 +4,7 @@
 */node_modules
 /PytorchTutorial/pytorch_style_gan_test_discriminator.ipynb
 */images
+01_유적건조물/
+*/datasets.py
+*/models.py
+*/__pycache__/

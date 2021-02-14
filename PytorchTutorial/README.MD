@@ -10,9 +10,5 @@
     * generator가 training 데이터에서 꺼내온 듯한 꺼내온듯한 완벽한 가짜 이미지를 만들어내고 있을때이고 discriminator는 항상 generator의 결과가 진짜인지 가짜인지 50%인 신뢰도를 가지고 추측한다.
 * DCGAN 이란 무엇일까?
     * DCGAN은 위에서 설명한 GAN의 확장으로 generator와 discriminator에서 각각 Convultion레이엉와 Convolution-transpose레이어를 사용한다는점에서 차이가 있다,
-
-* Input값 정의
-    * dataroot - 데이터세트 폴더의 루트 경로
-    * workers - Dataloader를 이용해 데이터를 로드하기 위해 사용되는 스레드 수
-    * batch_size - 학습에서 사용되는 배치 크기. 논문에서는 128. 
+* 
         
