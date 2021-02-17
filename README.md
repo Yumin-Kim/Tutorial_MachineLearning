@@ -110,3 +110,41 @@
     * Transposed Convolutions 
         * Transposed Convolution은 deconvolutional layer와 동일한 공간 해상도를 생성하기 점은 유사하지만 실제 수행되는 수학 연산은 다르다. Transposed Convolution layer는 정기적인 convolution을 수행하며 공간의 변화를 되돌립니다.
         * 어떤 곳에선 deconvolution이라는 이름을 사용하지만 실제론 deconvolution이 아니기 떄문에 부적절합니다.상황을 악화 시키기 위해 존재하지만 딥러닝 분야에선 흔하지 않는다.실제 deconvolution은 convolution의 과정을 되돌립니다.하나의 convolutional layer에 이미지를 입력한다고 상상하면 이제 출력물을 가져와 블랙박스에 넣으면 원본 이미지가 다시 나타납니다.이럴 경우 블랙 박스가 deconvolution을 수행한다고 할 수 있다.이 deconvolution이 convolution layer가 수행하는 것의 수학적 역 연산이다.
+## TODO
+* pytorch Gan  : https://github.com/eriklindernoren/PyTorch-GAN#infogan
+* https://github.com/mafda/generative_adversarial_networks_101
+* NVIDA  inpainting image : https://github.com/NVIDIA/partialconv     
+* 목표 : 이미지 복원 >> image inpainting
+1. 원하는 데이터 사용하는방법!!
+2. 다양한 GAN 알고리즘 접하기
+3. 
+
+* 목표 : 얼굴 인식하여 해당 인식한 얼굴 판별
+    * python face_cognition 사용하여 구현
+    * 학습 모델을 함수로 호출하여 얼굴 인식
+    * 밑에 있는 URL은 compare함에 있어 부족함을 채워줄것이다.
+    * https://github.com/ageitgey/face_recognition/wiki/Face-Recognition-Accuracy-Problems    
+
+* datatset 설명 mnist vs imageNet vs CoCo vs CIFAR
+    * https://page-box.tistory.com/5    
+
+* 2d image conver 3D model
+    * https://www.youtube.com/watch?v=qCVnPlr7eSY
+    * colab
+        * https://colab.research.google.com/drive/11z58bl3meSzo6kFqkahMa35G5jmh2Wgt#scrollTo=eclLG4xlJRIE
+    * 3dmodeling
+        * https://github.com/timzhang642/3D-Machine-Learning
+        * https://github.com/natowi/3D-Reconstruction-with-Deep-Learning-Methods     
+
+* 이미지 복원 
+    * https://jayhey.github.io/deep%20learning/2018/01/05/image_completion/
+    * 유튜브 및 코드 지원 
+        * https://www.youtube.com/channel/UCpujNlw4SUpgTU5rrDXH0Jw/videos
+
+* 현재 사용해본 GAN 관련 알고리즘
+    ![GAN 에서 파생된 다양한 알고리즘](https://user-images.githubusercontent.com/37301677/94356821-94392200-00cd-11eb-8f57-5a2c2b18a2a1.png)     
+    * [3DGAN] 3DGAN - pytorch 응용 X  , 예제 X , 알고리즘만
+    * [Deep Convolution]DCGAN - pytorch 응용 O  , 예제 O
+    * [Context Conditional]CCGAN - pytorch 응용 O  , 예제 O
+    * StyleGAN - pytorch 응용 X  , 예제 O
+    * Context Encoder - pytorch 응용 O  , 예제 O
