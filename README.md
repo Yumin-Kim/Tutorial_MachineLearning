@@ -122,6 +122,7 @@
 * 목표 : 얼굴 인식하여 해당 인식한 얼굴 판별
     * python face_cognition 사용하여 구현
     * 학습 모델을 함수로 호출하여 얼굴 인식
+    * 이미지에 대한 전처리 과정이 필요한지 찾아보기! 
     * 밑에 있는 URL은 compare함에 있어 부족함을 채워줄것이다.
     * https://github.com/ageitgey/face_recognition/wiki/Face-Recognition-Accuracy-Problems    
 
