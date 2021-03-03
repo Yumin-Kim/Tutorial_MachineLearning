@@ -18,6 +18,8 @@
 
 import face_recognition
 from flask import Flask, jsonify, request, redirect ,send_file
+import numpy as numpy
+import math
 
 # You can change this to any folder on your system
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -44,7 +46,7 @@ def upload_image():
 
         if file and allowed_file(file.filename):
             # The image file seems valid! Detect faces and return the result.
-            return detect_faces_in_image(file)
+            return compare_image(file)
 
     # If no valid image file was uploaded, show the file upload form:
     return '''
@@ -68,6 +70,10 @@ def RequsetJSON():
         "is_picture_of_obama": "is_obama"
         }
         return jsonify(result)
+# 현재 실시간 영상을 처리하는 로직보다는 캡쳐한 이미지를 http프로토콜 통신을 통해서 처리한다음 json데이터로 전송하는 로직 구현
+# 아래 route가 그 역할을 한다. 
+# @app.route("/compare")
+
 
 def detect_faces_in_image(file_stream):
     # Pre-calculated face encoding of Obama generated with face_recognition.face_encodings(img)
@@ -117,6 +123,46 @@ def detect_faces_in_image(file_stream):
     result = {
         "face_found_in_image": face_found,
         "is_picture_of_obama": is_obama
+    }
+    return jsonify(result)
+
+def compare_image(file_stream):
+    unknown_image = face_recognition.load_image_file("test04.jpg")
+    face_locations = face_recognition.face_locations(unknown_image,number_of_times_to_upsample=2,model="cnn")
+    face_encodings = face_recognition.face_encodings(unknown_image, face_locations,num_jitters=100)
+
+    img = face_recognition.load_image_file(file_stream)
+    known_face_encodings = face_recognition.face_encodings(img)
+    
+    face_found = False
+    is_obama = False
+    face_names = []
+    if len(known_face_encodings) > 0:
+        face_found = True
+        # See if the first face in the uploaded image matches the known face of Obama
+        for face_encoding in face_encodings:
+            # See if the face is a match for the known face(s)
+            matches = face_recognition.compare_faces(known_face_encodings, face_encoding,tolerance = 0.4)
+            name = "Unknown"
+
+            # If a match was found in known_face_encodings, just use the first one.
+            # if True in matches:
+            #     first_match_index = matches.index(True)
+            #     name = known_face_names[first_match_index]
+
+            # Or instead, use the known face with the smallest distance to the new face
+            face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+            best_match_index = np.argmin(face_distances)
+            #해당 이름 변경 하는 코드
+            if matches[best_match_index]:
+                name = "name : " + known_face_names[best_match_index] +" | per : " +str(math.ceil(face_distances[best_match_index]*100)) +"%"
+
+            face_names.append(name)
+
+    # Return the result as json
+    result = {
+        "face_found_in_image": face_found,
+        "is_picture_of_obama": face_names
     }
     return jsonify(result)
 
