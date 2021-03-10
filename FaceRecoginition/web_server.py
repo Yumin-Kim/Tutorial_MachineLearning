@@ -18,7 +18,7 @@
 
 import face_recognition
 from flask import Flask, jsonify, request, redirect ,send_file
-import numpy as numpy
+import numpy as np
 import math
 
 # You can change this to any folder on your system
@@ -31,6 +31,60 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
+
+# Load a sample picture and learn how to recognize it.
+obama_image = face_recognition.load_image_file("obama.jpg")
+obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
+
+# Load a second sample picture and learn how to recognize it.
+biden_image = face_recognition.load_image_file("biden.jpg")
+biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
+
+test01_image = face_recognition.load_image_file("test01.jpg")
+test01_face_encoding = face_recognition.face_encodings(test01_image)[0]
+
+# Load a sample picture and learn how to recognize it.
+test02_image = face_recognition.load_image_file("test02.jpg")
+test02_face_encoding = face_recognition.face_encodings(test02_image)[0]
+
+test03_image = face_recognition.load_image_file("test03.jpg")
+test03_face_encoding = face_recognition.face_encodings(test03_image)[0]
+
+# Load a sample picture and learn how to recognize it.
+test04_image = face_recognition.load_image_file("test04.jpg")
+test04_face_encoding = face_recognition.face_encodings(test04_image)[0]
+
+test05_image = face_recognition.load_image_file("test05.jpg")
+test05_face_encoding = face_recognition.face_encodings(test05_image)[0]
+
+# Load a sample picture and learn how to recognize it.
+test06_image = face_recognition.load_image_file("test06.jpg")
+test06_face_locations = face_recognition.face_locations(test06_image, number_of_times_to_upsample=0, model="cnn")
+test06_face_encoding = face_recognition.face_encodings(test06_image,test06_face_locations)[0]
+
+
+# Create arrays of known face encodings and their names
+known_face_encodings = [
+    obama_face_encoding,
+    biden_face_encoding,
+    test01_face_encoding,
+    test02_face_encoding,
+    test03_face_encoding,
+    test04_face_encoding,
+    test05_face_encoding,
+    test06_face_encoding,
+]
+known_face_names = [
+    "Barack Obama",
+    "Joe Biden",
+    "person1",
+    "person2",
+    "person3",
+    "person4",
+    "person5",
+    "person6",
+]
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_image():
@@ -58,6 +112,43 @@ def upload_image():
       <input type="submit" value="Upload">
     </form>
     '''
+@app.route('/compare', methods=['POST'])
+def compare_test():
+    # Check if a valid image file was uploaded
+    if request.method == 'POST':
+        print(request.files)
+        file = request.files['image']
+
+        print("Test compare Logic")    
+        if file and allowed_file(file.filename):
+            # The image file seems valid! Detect faces and return the result.
+            print('Learned encoding for', len(known_face_encodings), 'images.')
+            unknown_image = face_recognition.load_image_file(file)
+            face_locations = face_recognition.face_locations(unknown_image)
+            face_encodings = face_recognition.face_encodings(unknown_image, face_locations)
+
+            test = "진행중"
+            face_found = False
+            is_obama = False
+            face_names = []
+            for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
+            # See if the face is a match for the known face(s)
+                matches = face_recognition.compare_faces(known_face_encodings, face_encoding,tolerance=0.5)
+            # Or instead, use the known face with the smallest distance to the new face
+                face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+                best_match_index = np.argmin(face_distances)
+            #해당 이름 변경 하는 코드
+                if matches[best_match_index]:
+                    print(face_distances[best_match_index])
+                    test = "name : " + known_face_names[best_match_index] +" | per : " +str(math.ceil(1-face_distances[best_match_index])*100) +"%"
+
+            result = {
+                "face_found_in_image": test,
+                "is_picture_of_obama": face_names
+            }
+        print(result)
+        return jsonify(result)
+
 @app.route("/image")
 def RequestImage():
     if request.method == "GET":
@@ -127,43 +218,31 @@ def detect_faces_in_image(file_stream):
     return jsonify(result)
 
 def compare_image(file_stream):
-    unknown_image = face_recognition.load_image_file("test04.jpg")
-    face_locations = face_recognition.face_locations(unknown_image,number_of_times_to_upsample=2,model="cnn")
-    face_encodings = face_recognition.face_encodings(unknown_image, face_locations,num_jitters=100)
+    print('Learned encoding for', len(known_face_encodings), 'images.')
+    unknown_image = face_recognition.load_image_file(file_stream)
+    face_locations = face_recognition.face_locations(unknown_image)
+    face_encodings = face_recognition.face_encodings(unknown_image, face_locations)
 
-    img = face_recognition.load_image_file(file_stream)
-    known_face_encodings = face_recognition.face_encodings(img)
     
     face_found = False
     is_obama = False
     face_names = []
-    if len(known_face_encodings) > 0:
-        face_found = True
-        # See if the first face in the uploaded image matches the known face of Obama
-        for face_encoding in face_encodings:
-            # See if the face is a match for the known face(s)
-            matches = face_recognition.compare_faces(known_face_encodings, face_encoding,tolerance = 0.4)
-            name = "Unknown"
+    for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
+    # See if the face is a match for the known face(s)
+        matches = face_recognition.compare_faces(known_face_encodings, face_encoding,tolerance=0.5)
+    # Or instead, use the known face with the smallest distance to the new face
+        face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+        best_match_index = np.argmin(face_distances)
+    #해당 이름 변경 하는 코드
+        if matches[best_match_index]:
+            print(face_distances[best_match_index])
+            test = "name : " + known_face_names[best_match_index] +" | per : " +str(math.ceil(1-face_distances[best_match_index])*100) +"%"
 
-            # If a match was found in known_face_encodings, just use the first one.
-            # if True in matches:
-            #     first_match_index = matches.index(True)
-            #     name = known_face_names[first_match_index]
-
-            # Or instead, use the known face with the smallest distance to the new face
-            face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
-            best_match_index = np.argmin(face_distances)
-            #해당 이름 변경 하는 코드
-            if matches[best_match_index]:
-                name = "name : " + known_face_names[best_match_index] +" | per : " +str(math.ceil(face_distances[best_match_index]*100)) +"%"
-
-            face_names.append(name)
-
-    # Return the result as json
     result = {
-        "face_found_in_image": face_found,
+        "face_found_in_image": test,
         "is_picture_of_obama": face_names
     }
+    print(result)
     return jsonify(result)
 
 if __name__ == "__main__":
