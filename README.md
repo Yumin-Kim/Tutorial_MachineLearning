@@ -117,7 +117,6 @@
 * 목표 : 이미지 복원 >> image inpainting
 1. 원하는 데이터 사용하는방법!!
 2. 다양한 GAN 알고리즘 접하기
-3. 
 
 * 목표 : 얼굴 인식하여 해당 인식한 얼굴 판별
     * python face_cognition 사용하여 구현
@@ -149,3 +148,16 @@
     * [Context Conditional]CCGAN - pytorch 응용 O  , 예제 O
     * StyleGAN - pytorch 응용 X  , 예제 O
     * Context Encoder - pytorch 응용 O  , 예제 O
+
+---
+
+## 진행중인 AI 프로젝트 관련 github소스및 수정사항
+* 이미지 복원 관련 github
+   * <a href = "https://github.com/daa233/generative-inpainting-pytorch">Pytorch를 활용한 Gernerative image inpating</a>
+   * <a href = "http://jiahuiyu.com/deepfill/">[web site demo]Image inpainting to tensorflow</a>
+   * <a href = "https://github.com/JiahuiYu/generative_inpainting">[source]Image inpainting to tensorflow</a>
+* 능동 주차관리 시스템
+   * <a href = "https://github.com/fabiocarrara/deep-parking">[pyffe]Deep Learning for Decentralized Parking</a>
+   * <a href = "https://github.com/humblefool15/deep-learning-based-parking-system-">Mask R-CNN 및 Python을 활용히여 주차공간 확인</a>
+   * <a href = "https://github.com/245charan/Parking-Lot-Detection-OpenCV">영상처리로 주차 공간 인식 및 판별</a>
+
