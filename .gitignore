@@ -7,6 +7,9 @@
 01_유적건조물/
 */datasets.py
 */models.py
-*/__pycache__/
 */*.pt
 */*.jpg
+*/config.py
+*.jpg
+*.png
+__pycache__
